@@ -5,10 +5,12 @@ export interface LoggerContextType {
   logger: DBClientLogger;
 }
 const LoggerContext = createContext({} as LoggerContextType);
-
+const nullFunc = () => {
+  2;
+};
 export function useLogger() {
   const context = useContext(LoggerContext);
-  useEffect(() => {}, [context]);
+  useEffect(nullFunc, [context]);
   return context.logger;
 }
 
@@ -17,7 +19,7 @@ export function LoggerProvider(props: {
   config: ClientLoggerConfig;
 }) {
   const { children, config } = props;
-  useEffect(() => {}, [config]);
+  useEffect(nullFunc, [config]);
   const logger = new DBClientLogger(config);
   const context: LoggerContextType = { logger };
 
