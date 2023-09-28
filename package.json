@@ -46,12 +46,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Bednaz98/NodeTemplate.git"
+    "url": "https://github.com/Bednaz98/React-Logger.git"
   },
   "author": "Joshua Bednaz",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/Bednaz98/NodeTemplate/issues"
+    "url": "https://github.com/Bednaz98/React-Logger/issues"
   },
-  "homepage": "https://github.com/Bednaz98/NodeTemplate#readme"
+  "homepage": "https://github.com/Bednaz98/React-Logger#readme"
 }
