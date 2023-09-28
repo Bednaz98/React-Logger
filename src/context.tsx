@@ -1,6 +1,9 @@
 import React, { createContext, useContext, useEffect } from "react";
-import { ClientLoggerConfig, DBClientLogger } from "@jabz/client-db-logger";
-
+import {
+  ClientLoggerConfig,
+  DBClientLogger as DCL,
+} from "@jabz/client-db-logger";
+export type DBClientLogger = DCL;
 export interface LoggerContextType {
   logger: DBClientLogger;
 }
@@ -20,7 +23,7 @@ export function LoggerProvider(props: {
 }) {
   const { children, config } = props;
   useEffect(nullFunc, [config]);
-  const logger = new DBClientLogger(config);
+  const logger = new DCL(config);
   const context: LoggerContextType = { logger };
 
   return (
