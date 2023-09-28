@@ -1,6 +1,6 @@
 {
-  "name": "@jabz/react-library-template",
-  "version": "1.0.3",
+  "name": "@jabz/react-logger",
+  "version": "1.0.0",
   "description": "",
   "main": "./lib/index.js",
   "publishConfig": {

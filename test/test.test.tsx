@@ -1,13 +1,32 @@
 import React from "react";
-import { testingFunction } from "../src";
-import { Testing } from "../src/testComponent";
 import renderer from "react-test-renderer";
-
-test("defualt Test", () => {
-  expect(testingFunction()).toBe(0);
+import { LoggerProvider, useLogger } from "../src/index";
+import { ClientLoggerConfig } from "@jabz/client-db-logger";
+const config: ClientLoggerConfig = {
+  sessionID: "",
+  appName: "",
+  environment: "",
+  loggingEndPoint: "",
+  sendThreshHold: 10,
+};
+test("snapshot", () => {
+  const tree = renderer.create(<LoggerProvider config={config} />).toJSON();
+  expect(tree).toMatchSnapshot();
 });
 
-test("snapshot", () => {
-  const tree = renderer.create(<Testing />).toJSON();
+test("useLogger", () => {
+  const TempComponent = () => {
+    const logger = useLogger();
+    (async () => {
+      logger.error("test");
+    })();
+    return <></>;
+  };
+  const Wrap = () => (
+    <LoggerProvider config={config}>
+      <TempComponent />
+    </LoggerProvider>
+  );
+  const tree = renderer.create(<Wrap />).toJSON();
   expect(tree).toMatchSnapshot();
 });
